@@ -13,6 +13,7 @@ import com.nik.main.model.Job;
 import com.nik.main.service.JobServiceImp;
 
 @Controller
+/* @RequestMapping("/home") */
 public class HomeController {
 
 	@Autowired
@@ -36,11 +37,42 @@ public class HomeController {
 		mv.addObject("jobs", jobServiceImp.getJob());
 		return mv;
 	}
+
+	@RequestMapping("/job/{jobId}")
+	public ModelAndView getJob(@PathVariable("jobId") Long jobId) {
+		ModelAndView mv = new ModelAndView("editJob");
+		mv.addObject("job", jobServiceImp.getJobById(jobId));
+		mv.addObject("jobs", jobServiceImp.getJob());
+
+		return mv;
+	}
 	
-	@RequestMapping("/job/{ jobId }")
-	public String getJob(@PathVariable("jobId") Long jobId, Model model) {
-		model.addAttribute("job", jobServiceImp.getJobById(jobId));
-		model.addAttribute("jobs", jobServiceImp.getJob());
-		return "editJob";
+	@GetMapping("/deleteJob")
+	public ModelAndView deleteJob() {
+		ModelAndView mv = new ModelAndView("deleteJob");
+		mv.addObject("jobs", jobServiceImp.getJob());
+		return mv;
+	}
+	
+	@GetMapping("/deleteJob/{jobId}")
+	public ModelAndView deleteJob(@PathVariable("jobId") Long jobId) {
+		ModelAndView mv = new ModelAndView("deleteJob");
+		jobServiceImp.deleteJobById(jobId);
+		mv.addObject("jobs", jobServiceImp.getJob());
+		mv.addObject("status", "Job Id " + jobId + " is deleted successfully...");
+		return mv;
+	}
+	
+	@PostMapping("/updateJob")
+	public ModelAndView updateJob(Job job) {
+		ModelAndView mv = new ModelAndView("updateJob");
+		System.out.println(job.getJobId());
+		System.out.println(job.getJobTitle());
+		System.out.println(job.getDepartment());
+		System.out.println(job.getDateOfJobCreation());
+		jobServiceImp.addJob(job);
+		mv.addObject("jobs", jobServiceImp.getJob());
+		mv.addObject("status", "Job Id " + job.getJobId() + " is updated successfully...");
+		return mv;
 	}
 }

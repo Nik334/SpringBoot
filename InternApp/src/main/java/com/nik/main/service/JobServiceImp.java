@@ -21,21 +21,27 @@ public class JobServiceImp implements JobService{
 	}
 	
 	@Override
-	public Optional<Job> getJob(long jobId) {
+	public Optional<Job> getJob(Long jobId) {
 		return jobRepo.findById(jobId);
 	}
 	
 	@Override
 	public Job addJob(Job job) {
-		jobRepo.save(job);
-		return job;
+		return jobRepo.save(job);
 	}
 
 	@Override
-	public Job getJobById(long jobId) {
-		Job job = jobRepo.findById(jobId).orElse(null);
-		return job;
+	public Job getJobById(Long jobId) {
+		return jobRepo.findById(jobId).orElse(null);
+	}
+
+	@Override
+	public void deleteJobById(Long jobId) {
+		jobRepo.deleteById(jobId);
 	}
 	
+	public void updateJobById() {
+		/* jobRepo. */
+	}
 	
 }

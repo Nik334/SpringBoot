@@ -36,9 +36,9 @@
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> Job <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-1" class="collapse">
-                        <li><a href="addJob"><i class="fa fa-angle-double-right"></i> ADD JOB</a></li>
-                        <li><a href="editJob"><i class="fa fa-angle-double-right"></i> EDIT JOB</a></li>
-                        <li><a href="deleteJob"><i class="fa fa-angle-double-right"></i> DELETE JOB</a></li>
+                        <li><a href="/addJob"><i class="fa fa-angle-double-right"></i> ADD JOB</a></li>
+                        <li><a href="/editJob"><i class="fa fa-angle-double-right"></i> EDIT JOB</a></li>
+                        <li><a href="/deleteJob"><i class="fa fa-angle-double-right"></i> DELETE JOB</a></li>
                     </ul>
                 </li>
                 <li>

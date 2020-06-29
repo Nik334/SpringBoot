@@ -23,7 +23,7 @@
 			</div>
 			<form action="addJob" method="post" class="row">
 				<c:if test="${not empty status }">
-					<div id="myAlert" class="alert alert-success col-sm-6">${ status }</div>
+					<div id="myAlert" class="alert alert-success">${ status }</div>
 				</c:if>
 				<div class="col-sm-6">
 					<div class="form-group">

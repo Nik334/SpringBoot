@@ -23,17 +23,36 @@
 					<hr>
 				</div>
 			</div>
-			<select class="form-control pull-right" name="selectJob" id="selectJob">
-			<c:forEach items="${ requestScope.jobs }" var="job">
-				<option value="job/${ job.getJobId() }">${ job.getJobTitle() }</option>
-			</c:forEach>
-			</select>
 			
-			<div class="row">
-				${ job.getJobTitle() }
-				${ job.getJobId() }
-				${ job.getJobDepartment() }
-			</div>
+			<form class="row" action="/updateJob" method="post">
+				<c:if test="${not empty status }">
+				<div id="myAlert" class="alert alert-success">${ status }</div>
+				</c:if>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="jobId">Job Id</label> 
+						<select class="form-control" name="jobId" id="jobId">
+							<option>Select Job Id</option>
+						<c:forEach items="${ requestScope.jobs }" var="job">
+							<option value="${ job.getJobId() }">${ job.getJobId() }</option>
+						</c:forEach>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="jobTitle">Job title</label> 
+						<input type="text" class="form-control" value="${ job.getJobTitle() }" name="jobTitle" id="jobTitle" placeholder="Enter Job title" autofocus=""/> 
+						<span class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label for="department">Department</label> 
+						<input type="text" class="form-control" value="${ job.getDepartment() }" name="department" id="department" placeholder="Enter Department Name" /> 
+						<span class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-info" id="update" name="update" value="Update">
+					</div>
+				</div>
+			</form>
 			<!-- /.row -->
 		</div>
 		<!-- /.container-fluid -->
@@ -43,8 +62,8 @@
 	
 	<script type="text/javascript">
 	$(function(){
-	      $('#selectJob').on('change', function () {
-	          var url = $(this).val();
+	      $('#jobId').on('change', function () {
+	          var url = '../job/'+$(this).val();
 	          if (url) { 
 	              window.location = url;
 	          }

@@ -1,5 +1,6 @@
 package com.nik.main.model;
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import javax.persistence.CascadeType;
@@ -22,7 +23,7 @@ public class User {
 	private String position;
 	
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private ZonedDateTime dateOfJoining;
+	private ZonedDateTime dateOfJoining = ZonedDateTime.now(ZoneId.of("UTC"));
 	
 	private boolean status;
 

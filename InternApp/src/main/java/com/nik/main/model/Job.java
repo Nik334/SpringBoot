@@ -1,5 +1,6 @@
 package com.nik.main.model;
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ public class Job {
 	private String jobTitle;
 	
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private ZonedDateTime dateOfJobCreation;
+	private ZonedDateTime dateOfJobCreation = ZonedDateTime.now(ZoneId.of("UTC"));
 	
 	private String department;
 	

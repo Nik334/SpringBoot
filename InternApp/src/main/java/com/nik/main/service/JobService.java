@@ -9,9 +9,11 @@ public interface JobService {
 	
 	public List<Job> getJob();
 	
-	public Optional<Job> getJob(long jobId);
+	public Optional<Job> getJob(Long jobId);
 	
 	public Job addJob(Job job);
 	
-	public Job getJobById(long jobId);
+	public Job getJobById(Long jobId);
+	
+	public void deleteJobById(Long jobId);
 }

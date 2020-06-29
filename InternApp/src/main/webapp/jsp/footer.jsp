@@ -1,7 +1,7 @@
 </div><!-- /#wrapper -->
-<script src="assests/js/jquery-2.2.0.min.js" type="text/javascript"></script>
-<script src="assests/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assests/js/bootstrap-show-password.min.js" type="text/javascript"></script>
+<script src="../assests/js/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="../assests/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assests/js/bootstrap-show-password.min.js" type="text/javascript"></script>
 
 <script>
 $(function(){

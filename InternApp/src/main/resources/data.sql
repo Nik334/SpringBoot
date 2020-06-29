@@ -27,5 +27,5 @@ insert into user(
 	'Kumar',
 	'Admin',
 	true,
-	1
+	null
 );
