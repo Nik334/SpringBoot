@@ -54,8 +54,8 @@ public class HomeController {
 		return mv;
 	}
 	
-	@GetMapping("/deleteJob/{jobId}")
-	public ModelAndView deleteJob(@PathVariable("jobId") Long jobId) {
+	@PostMapping("/deleteJob")
+	public ModelAndView deleteJob(Long jobId) {
 		ModelAndView mv = new ModelAndView("deleteJob");
 		jobServiceImp.deleteJobById(jobId);
 		mv.addObject("jobs", jobServiceImp.getJob());
@@ -65,11 +65,7 @@ public class HomeController {
 	
 	@PostMapping("/updateJob")
 	public ModelAndView updateJob(Job job) {
-		ModelAndView mv = new ModelAndView("updateJob");
-		System.out.println(job.getJobId());
-		System.out.println(job.getJobTitle());
-		System.out.println(job.getDepartment());
-		System.out.println(job.getDateOfJobCreation());
+		ModelAndView mv = new ModelAndView("editJob");
 		jobServiceImp.addJob(job);
 		mv.addObject("jobs", jobServiceImp.getJob());
 		mv.addObject("status", "Job Id " + job.getJobId() + " is updated successfully...");

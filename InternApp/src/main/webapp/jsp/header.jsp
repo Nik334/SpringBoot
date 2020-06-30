@@ -36,13 +36,13 @@
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> Job <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-1" class="collapse">
-                        <li><a href="/addJob"><i class="fa fa-angle-double-right"></i> ADD JOB</a></li>
-                        <li><a href="/editJob"><i class="fa fa-angle-double-right"></i> EDIT JOB</a></li>
-                        <li><a href="/deleteJob"><i class="fa fa-angle-double-right"></i> DELETE JOB</a></li>
+                        <li><a href="/addJob"><i class="fa fa-plus"></i> ADD JOB</a></li>
+                        <li><a href="/editJob"><i class="fa fa-pencil"></i> EDIT JOB</a></li>
+                        <li><a href="/deleteJob"><i class="fa fa-trash"></i> DELETE JOB</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-user-plus"></i>  MENU 3</a>
+                    <a href="/addJob"><i class="fa fa-fw fa-plus"></i>  Create Job</a>
                 </li>
                 <li>
                     <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>

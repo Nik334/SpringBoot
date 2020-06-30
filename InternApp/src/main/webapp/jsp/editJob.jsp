@@ -17,9 +17,7 @@
 			<!-- Page Heading -->
 			<div class="row" id="main">
 				<div class="col-sm-12 col-md-12" id="content">
-					<h1>
-						<strong>Edit Job</strong>
-					</h1>
+					<h1><strong>Edit Job</strong></h1>
 					<hr>
 				</div>
 			</div>
@@ -33,8 +31,15 @@
 						<label for="jobId">Job Id</label> 
 						<select class="form-control" name="jobId" id="jobId">
 							<option>Select Job Id</option>
-						<c:forEach items="${ requestScope.jobs }" var="job">
-							<option value="${ job.getJobId() }">${ job.getJobId() }</option>
+						<c:forEach items="${ requestScope.jobs }" var="particularJob">
+						<c:choose>
+							<c:when test="${ job.getJobId() == particularJob.getJobId() }">
+								<option value="${ job.getJobId() }" selected="selected">${ job.getJobId() }</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${ particularJob.getJobId() }">${ particularJob.getJobId() }</option>
+							</c:otherwise>
+						</c:choose>
 						</c:forEach>
 						</select>
 					</div>

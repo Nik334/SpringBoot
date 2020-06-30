@@ -43,7 +43,12 @@
 						<td>${ job.getJobTitle() }</td>
 						<td>${ job.getDepartment() }</td>
 						<td>${ job.getDateOfJobCreation() }</td>
-						<td><a href="deleteJob/${ job.getJobId() }" class="text-danger">Delete</a></td>
+						<td>
+							<form action="deleteJob" method="post">
+								<input id="jobId" name="jobId" value="${ job.getJobId() }" hidden="true">
+								<input type="submit" class="btn btn-danger" value="Delete">
+							</form>
+						</td>
 					</tr>
 				</c:forEach>					
 				</tbody>
