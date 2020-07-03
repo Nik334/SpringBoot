@@ -36,19 +36,19 @@
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> Job <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-1" class="collapse">
-                        <li><a href="/addJob"><i class="fa fa-plus"></i> ADD JOB</a></li>
-                        <li><a href="/editJob"><i class="fa fa-pencil"></i> EDIT JOB</a></li>
-                        <li><a href="/deleteJob"><i class="fa fa-trash"></i> DELETE JOB</a></li>
+                        <li><a href="../../admin/addJob"><i class="fa fa-plus"></i> ADD JOB</a></li>
+                        <li><a href="../../admin/editJob"><i class="fa fa-pencil"></i> EDIT JOB</a></li>
+                        <li><a href="../../admin/deleteJob"><i class="fa fa-trash"></i> DELETE JOB</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/addJob"><i class="fa fa-fw fa-plus"></i>  Create Job</a>
+                    <a href="../../admin/addJob"><i class="fa fa-fw fa-plus"></i>  Create Job</a>
                 </li>
                 <li>
-                    <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>
+                    <a href="../../admin/assigningCandidate"><i class="fa fa-fw fa-gavel"></i> Assign candidate to the job</a>
                 </li>
                 <li>
-                    <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>
+                    <a href="faq"><i class="fa fa-fw fa fa-user-plus"></i> Add Recruiter (Visitor)</a>
                 </li>
             </ul>
         </div>

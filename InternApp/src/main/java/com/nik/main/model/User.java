@@ -21,6 +21,7 @@ public class User {
 	private String lastName;
 	private String email;
 	private String position;
+	private String role;
 	
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private ZonedDateTime dateOfJoining = ZonedDateTime.now(ZoneId.of("UTC"));
@@ -78,7 +79,15 @@ public class User {
 	public void setDateOfJoining(ZonedDateTime dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
+	
+	public String getRole() {
+		return role;
+	}
 
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 	public boolean isStatus() {
 		return status;
 	}

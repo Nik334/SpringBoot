@@ -24,7 +24,7 @@
 			<c:if test="${ empty jobs }"><center>No content to display</center></c:if>
 			<c:if test="${ not empty jobs }">
 			<c:if test="${ not empty status }">
-				<div id="myAlert" class="alert alert-success">${ status }</div>
+				${ status }
 			</c:if>
 			<table class="table table-bordered table-hover table-condensed table-responsive">
 				<thead>

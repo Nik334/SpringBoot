@@ -68,7 +68,7 @@
 	<script type="text/javascript">
 	$(function(){
 	      $('#jobId').on('change', function () {
-	          var url = '../job/'+$(this).val();
+	          var url = '../../admin/job/'+$(this).val();
 	          if (url) { 
 	              window.location = url;
 	          }

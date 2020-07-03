@@ -4,34 +4,42 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nik.main.dao.UserRepo;
+import com.nik.main.model.Job;
 import com.nik.main.model.User;
 
 @RestController
-public class UserServiceImp 
+public class UserServiceImp implements UserService
 {
 	@Autowired
 	UserRepo userRepo;
 	
-	@GetMapping("/users")
+	@Override
 	public List<User> users() {
 		return userRepo.findAll();
 	}
 	
-	@GetMapping("user/{userId}")
-	public Optional<User> getUser(@PathVariable("userId") long userId) {
+	@Override
+	public Optional<User> getUser(long userId) {
 		return userRepo.findById(userId);
 	}
 	
-	@PostMapping("/addUser")
-	public User addUser(@RequestBody User user) {
+	@Override
+	public User addUser(User user) {
 		userRepo.save(user);
 		return user;
 	}
+	
+	@Override
+	public boolean isJobExists(Job job) {
+		return userRepo.isJobExists(job);
+	}
+
+	@Override
+	public List<Job> findByJobAssigned(Job job) {
+		return userRepo.findByJobAssigned(job);
+	}
+	
 }
