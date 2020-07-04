@@ -16,4 +16,6 @@ public interface JobService {
 	public Job getJobById(Long jobId);
 	
 	public void deleteJobById(Long jobId);
+	
+	public boolean isJobIdExists(Long jobId);
 }

@@ -16,5 +16,6 @@ public interface UserRepo extends JpaRepository<User, Long> {
 	@Query("select count(jobAssigned)>0 from User where jobAssigned = ?1")
 	public boolean isJobExists(@Param("jobAssigned") Job job);
 	
-	public List<Job> findByJobAssigned(Job job);
+	public List<User> findByJobAssigned(Job job);
+	
 }

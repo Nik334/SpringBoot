@@ -37,6 +37,7 @@ public class AdminController {
 	public String addJobF(Job job, Model model) {
 		jobServiceImp.addJob(job);
 		model.addAttribute("status", "Job added successfully...");
+		model.addAttribute("jobId", job.getJobId());
 		return "addJob";
 	}
 
@@ -98,15 +99,59 @@ public class AdminController {
 		return mv;
 	}
 	
-	@PostMapping("assign")
-	public ModelAndView assigningCandidate(Long jobId) {
+	@GetMapping("assign")
+	public ModelAndView assign(Long jobId) {
 		ModelAndView mv = new ModelAndView("assign");
-		mv.addObject("jobId", jobId);
-		System.out.println(jobId);
-		System.out.println("Fetchh =>" + jobServiceImp.getJobById(jobId).getJobId());
-		System.out.println("size=> " + userServiceImp.findByJobAssigned(jobServiceImp.getJobById(jobId)).size());
-		mv.addObject("usersOnTheJob", userServiceImp.findByJobAssigned(jobServiceImp.getJobById(jobId)));
-		mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssigned(null));
+		if(jobServiceImp.isJobIdExists(jobId)) {
+			mv.addObject("jobId", jobId);
+			
+			mv.addObject("usersOnTheJob", userServiceImp.findByJobAssigned(jobServiceImp.getJobById(jobId)));
+			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssigned(null));
+		}
+		else {
+			mv.addObject("status", "Job does't exists...");
+		}
+		
+		return mv;
+	}
+	
+	@GetMapping("assignUser")
+	public ModelAndView assignUser(Long jobId, Long userId) {
+		ModelAndView mv = new ModelAndView("assign");
+		if(jobServiceImp.isJobIdExists(jobId)) {
+			mv.addObject("jobId", jobId);
+			if(userServiceImp.isUserExists(userId)) {
+				userServiceImp.addJobId(jobServiceImp.getJobById(jobId), userServiceImp.getUser(userId));
+			}else {
+				mv.addObject("status", "User does't exists...");
+			}
+			mv.addObject("usersOnTheJob", userServiceImp.findByJobAssigned(jobServiceImp.getJobById(jobId)));
+			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssigned(null));
+		}
+		else {
+			mv.addObject("status", "Job does't exists...");
+		}
+		
+		return mv;
+	}
+	
+	@GetMapping("removeUser")
+	public ModelAndView removeUser(Long jobId, Long userId) {
+		ModelAndView mv = new ModelAndView("assign");
+		if(jobServiceImp.isJobIdExists(jobId)) {
+			mv.addObject("jobId", jobId);
+			if(userServiceImp.isUserExists(userId)) {
+				userServiceImp.addJobId(null, userServiceImp.getUser(userId));
+			}else {
+				mv.addObject("status", "User does't exists...");
+			}
+			mv.addObject("usersOnTheJob", userServiceImp.findByJobAssigned(jobServiceImp.getJobById(jobId)));
+			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssigned(null));
+		}
+		else {
+			mv.addObject("status", "Job does't exists...");
+		}
+		
 		return mv;
 	}
 }

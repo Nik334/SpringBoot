@@ -29,7 +29,7 @@
 									${ job.getJobId() }. ${ job.getJobTitle() }
 								</a>
 							</h4>
-							<form action="assign" method="post" class="pull-right">
+							<form action="assign" method="get" class="pull-right">
 								<input id="jobId" name="jobId" value="${ job.getJobId() }" hidden="true">
 								<button type="submit"><span class="fa fa-arrow-right"></span></button>
 							</form>
@@ -67,6 +67,7 @@
 							</table>
 						</div> --%>
 					</div>
+					<br>
 				</c:forEach>
 				</div>
 			<!-- /.row -->

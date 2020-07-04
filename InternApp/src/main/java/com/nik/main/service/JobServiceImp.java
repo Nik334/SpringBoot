@@ -43,5 +43,11 @@ public class JobServiceImp implements JobService{
 	public void updateJobById() {
 		/* jobRepo. */
 	}
+
+	@Override
+	public boolean isJobIdExists(Long jobId) {
+		return jobRepo.existsById(jobId);
+		
+	}
 	
 }

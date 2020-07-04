@@ -1,7 +1,6 @@
 package com.nik.main.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,14 +21,13 @@ public class UserServiceImp implements UserService
 	}
 	
 	@Override
-	public Optional<User> getUser(long userId) {
-		return userRepo.findById(userId);
+	public User getUser(long userId) {
+		return userRepo.findById(userId).orElse(null);
 	}
 	
 	@Override
 	public User addUser(User user) {
-		userRepo.save(user);
-		return user;
+		return userRepo.save(user);
 	}
 	
 	@Override
@@ -38,8 +36,19 @@ public class UserServiceImp implements UserService
 	}
 
 	@Override
-	public List<Job> findByJobAssigned(Job job) {
+	public List<User> findByJobAssigned(Job job) {
 		return userRepo.findByJobAssigned(job);
+	}
+
+	@Override
+	public boolean isUserExists(Long userId) {
+		return userRepo.existsById(userId);
+	}
+
+	@Override
+	public User addJobId(Job job, User user) {
+		user.setJobAssigned(job);
+		return userRepo.save(user);
 	}
 	
 }

@@ -21,10 +21,16 @@
 					<hr>
 				</div>
 			</div>
+			<c:if test="${not empty status }">
+				<div id="myAlert" class="alert alert-success">
+					${ status } 
+					<form action="assign" method="get" class="pull-right">
+						<input id="jobId" name="jobId" value="${ job.getJobId() }" hidden="hidden">
+						<button type="submit" class="btn btn-link">Assign candidate to Job id : ${ job.getJobId() }</button>
+					</form>
+				</div>
+			</c:if>
 			<form action="addJob" method="post" class="row">
-				<c:if test="${not empty status }">
-					<div id="myAlert" class="alert alert-success">${ status }</div>
-				</c:if>
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label for="jobTitle">Job title</label> 
