@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			
-			<form class="row" action="/updateJob" method="post">
+			<form class="row" action="../../admin/updateJob" method="post">
 				<c:if test="${not empty status }">
 				<div id="myAlert" class="alert alert-success">${ status }</div>
 				</c:if>

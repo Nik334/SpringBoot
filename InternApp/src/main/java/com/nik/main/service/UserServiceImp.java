@@ -50,5 +50,15 @@ public class UserServiceImp implements UserService
 		user.setJobAssigned(job);
 		return userRepo.save(user);
 	}
+
+	@Override
+	public User findByEmail(String email) {
+		return userRepo.findByEmail(email);
+	}
+
+	@Override
+	public List<User> findByJobAssignedForNull() {
+		return userRepo.findByJobAssignedForNull();
+	}
 	
 }

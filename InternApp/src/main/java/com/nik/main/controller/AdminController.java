@@ -10,22 +10,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nik.main.model.Job;
+import com.nik.main.model.User;
 import com.nik.main.service.JobServiceImp;
+import com.nik.main.service.LoginServiceImp;
 import com.nik.main.service.UserServiceImp;
 
 @Controller
 @RequestMapping("/admin/") 
 public class AdminController {
+	
+	@Autowired
+	LoginServiceImp loginServiceImp;
 
 	@Autowired
 	JobServiceImp jobServiceImp;
 	
 	@Autowired
 	UserServiceImp userServiceImp;
+	
+	@GetMapping("login")
+	public String login() {
+		return "adminLogin";
+	}
 
-	@PostMapping("home")
-	public String loginF() {
-		return "home";
+	@PostMapping("login")
+	public String login(String email, String password, Model model) {
+		User user = userServiceImp.findByEmail(email);
+		if(user != null) {
+			if(loginServiceImp.isExists(user, password)) {
+				return "home";
+			}
+			else {
+				model.addAttribute("status", "Login Failed... Credintial incorrect");
+				return "adminLogin";
+			}
+		}
+		else {
+			model.addAttribute("status", "Login Failed... Credintial incorrect");
+			return "adminLogin";
+		}
 	}
 	
 	@GetMapping("addJob")
@@ -106,7 +129,7 @@ public class AdminController {
 			mv.addObject("jobId", jobId);
 			
 			mv.addObject("usersOnTheJob", userServiceImp.findByJobAssigned(jobServiceImp.getJobById(jobId)));
-			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssigned(null));
+			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssignedForNull());
 		}
 		else {
 			mv.addObject("status", "Job does't exists...");
@@ -126,7 +149,7 @@ public class AdminController {
 				mv.addObject("status", "User does't exists...");
 			}
 			mv.addObject("usersOnTheJob", userServiceImp.findByJobAssigned(jobServiceImp.getJobById(jobId)));
-			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssigned(null));
+			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssignedForNull());
 		}
 		else {
 			mv.addObject("status", "Job does't exists...");
@@ -146,12 +169,26 @@ public class AdminController {
 				mv.addObject("status", "User does't exists...");
 			}
 			mv.addObject("usersOnTheJob", userServiceImp.findByJobAssigned(jobServiceImp.getJobById(jobId)));
-			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssigned(null));
+			mv.addObject("usersNotHaveJob", userServiceImp.findByJobAssignedForNull());
 		}
 		else {
 			mv.addObject("status", "Job does't exists...");
 		}
 		
 		return mv;
+	}
+	
+	@GetMapping("addVisitor")
+	public String addVisitor() {
+		return "addVisitor";
+	}
+	
+	@PostMapping("addVisitor")
+	public String addVisitor(User user, Model model) {
+		user.setPosition("visitor");
+		user.setStatus(true);
+		userServiceImp.addUser(user);
+		model.addAttribute("status", "Visitor added successfully");
+		return "addVisitor";
 	}
 }

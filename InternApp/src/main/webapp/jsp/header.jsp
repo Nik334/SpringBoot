@@ -48,7 +48,7 @@
                     <a href="../../admin/assigningCandidate"><i class="fa fa-fw fa-gavel"></i> Assign candidate to the job</a>
                 </li>
                 <li>
-                    <a href="faq"><i class="fa fa-fw fa fa-user-plus"></i> Add Recruiter (Visitor)</a>
+                    <a href="../../admin/addVisitor"><i class="fa fa-fw fa fa-user-plus"></i> Add Recruiter (Visitor)</a>
                 </li>
             </ul>
         </div>

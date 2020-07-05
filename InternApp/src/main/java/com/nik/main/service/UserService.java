@@ -15,8 +15,12 @@ public interface UserService {
 	public boolean isJobExists(Job job);
 	
 	public List<User> findByJobAssigned(Job job);
+
+	public List<User> findByJobAssignedForNull();
 	
 	public boolean isUserExists(Long userId);
 	
 	public User addJobId(Job job, User user);
+	
+	public User findByEmail(String email);
 }
