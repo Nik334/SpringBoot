@@ -36,6 +36,7 @@
 								<th>Name</th>
 								<th>Email</th>
 								<th>Role</th>
+								<th>Position</th>
 								<th>Status</th>
 								<th></th>
 							</tr>
@@ -47,6 +48,7 @@
 								<td>${ user.getFirstName() } ${ user.getLastName() }</td>
 								<td>${ user.getEmail() }</td>
 								<td>${ user.getRole() }</td>
+								<td>${ user.getPosition() }</td>
 								<td class="text-success">Assigned</td>
 								<td>
 									<form action="removeUser" method="get">
@@ -80,6 +82,7 @@
 								<th>Name</th>
 								<th>Email</th>
 								<th>Role</th>
+								<th>Position</th>
 								<th>Status</th>
 								<th></th>
 							</tr>
@@ -91,6 +94,7 @@
 								<td>${ user.getFirstName() } ${ user.getLastName() }</td>
 								<td>${ user.getEmail() }</td>
 								<td>${ user.getRole() }</td>
+								<td>${ user.getPosition() }</td>
 								<td class="text-danger">Not Assigned</td>
 								<td>
 									<form action="assignUser" method="get">

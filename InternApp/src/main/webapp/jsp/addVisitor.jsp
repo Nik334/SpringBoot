@@ -29,12 +29,16 @@
 						<input type="text" class="form-control" name="firstName" id="firstName" placeholder="Enter First Name" autofocus="autofocus" required="required">
 					</div>
 					<div class="form-group">
-						<label for="lastName">Job title</label> 
+						<label for="lastName">Last Name</label> 
 						<input type="text" class="form-control" name="lastName" id="lastName" placeholder="Enter Last Name" required="required"/> 
 					</div>
 					<div class="form-group">
-						<label for="email">Department</label> 
+						<label for="email">Email</label> 
 						<input type="text" class="form-control" name="email" id="email" placeholder="Enter Email address" required="required"/> 
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label> 
+						<input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required="required" data-toggle="password"/> 
 					</div>
 					<div class="form-group">
 						<input type="submit" class="btn btn-info" value="Register">

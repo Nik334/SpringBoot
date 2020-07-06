@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.nik.main.model.Job;
 import com.nik.main.model.User;
+import com.nik.main.model.UserLogin;
 import com.nik.main.service.JobServiceImp;
 import com.nik.main.service.LoginServiceImp;
 import com.nik.main.service.UserServiceImp;
@@ -35,7 +36,7 @@ public class AdminController {
 
 	@PostMapping("login")
 	public String login(String email, String password, Model model) {
-		User user = userServiceImp.findByEmail(email);
+		User user = userServiceImp.findByEmailForAdmin(email);
 		if(user != null) {
 			if(loginServiceImp.isExists(user, password)) {
 				return "home";
@@ -184,10 +185,20 @@ public class AdminController {
 	}
 	
 	@PostMapping("addVisitor")
-	public String addVisitor(User user, Model model) {
+	public String addVisitor(String firstName, String lastName, String email, String password, Model model) {
+		User user = new User();
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setEmail(email);
 		user.setPosition("visitor");
 		user.setStatus(true);
 		userServiceImp.addUser(user);
+		
+		UserLogin userLogin = new UserLogin();
+		userLogin.setUser(user);
+		userLogin.setPassword(password);
+		loginServiceImp.addLogin(userLogin);
+		
 		model.addAttribute("status", "Visitor added successfully");
 		return "addVisitor";
 	}

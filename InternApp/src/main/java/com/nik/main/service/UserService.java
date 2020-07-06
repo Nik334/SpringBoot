@@ -22,5 +22,7 @@ public interface UserService {
 	
 	public User addJobId(Job job, User user);
 	
-	public User findByEmail(String email);
+	public User findByEmailForAdmin(String email);
+	
+	public User findByEmailForVisitor(String email);
 }

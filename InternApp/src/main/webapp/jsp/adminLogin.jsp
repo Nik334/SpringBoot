@@ -20,9 +20,9 @@
               <div class="row">
                   <div class="col-sm-offset-3 col-sm-6" style="box-shadow: 0px 30px 60px rgba(0,0,0,0.30)">
                       <div class="jumbotron form-group">
-                          <div class="h2 text-center"><strong>User Login</strong></div>
+                          <div class="h2 text-center"><strong>Admin Login</strong></div>
                           <div class="form-group">
-                              <input type="text" class="form-control" name="email" id="email" placeholder="Username or Email" autofocus=""/>
+                              <input type="text" class="form-control" name="email" id="email" placeholder="Username or Email" autofocus="autofocus"/>
                               <span class="text-danger"></span>
                           </div>
                           <div class="form-group">

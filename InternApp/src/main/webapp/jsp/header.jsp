@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://bryanrojasq.wordpress.com">
+            <a class="navbar-brand" href="../../admin/home">
                 <img src="http://placehold.it/200x50&text=LOGO" alt="LOGO">
             </a>
         </div>

@@ -52,13 +52,17 @@ public class UserServiceImp implements UserService
 	}
 
 	@Override
-	public User findByEmail(String email) {
-		return userRepo.findByEmail(email);
+	public User findByEmailForAdmin(String email) {
+		return userRepo.findByEmailForAdmin(email);
+	}
+	
+	@Override
+	public User findByEmailForVisitor(String email) {
+		return userRepo.findByEmailForVisitor(email);
 	}
 
 	@Override
 	public List<User> findByJobAssignedForNull() {
 		return userRepo.findByJobAssignedForNull();
 	}
-	
 }
